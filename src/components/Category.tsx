@@ -29,7 +29,7 @@ export interface Categories {
   categories: Category[];
 }
 
-interface SubCategories {
+export interface SubCategories {
   subCategories: {
     name: string;
     subsubCategory: {
@@ -39,7 +39,7 @@ interface SubCategories {
   }[];
 }
 
-interface SubsubCategory {
+export interface SubsubCategory {
   subsubCategory: {
     subName: string;
     users: string[];
