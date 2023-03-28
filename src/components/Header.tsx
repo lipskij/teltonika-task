@@ -6,7 +6,7 @@ const Header: React.FC = () => {
   const location = useLocation();
   let headerText = "";
   const pathName = location.pathname.split("/").slice(1, 2).toString();
-  
+
   switch (pathName) {
     case "new-user":
       headerText = "New User";

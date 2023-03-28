@@ -1,4 +1,5 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
+import { SHA256 } from "crypto-js";
 
 const initialState = {
   users: [
@@ -25,6 +26,10 @@ const initialState = {
   ],
 };
 
+const salt =
+  Math.random().toString(36).substring(2, 15) +
+  Math.random().toString(36).substring(2, 15);
+
 const userSlice = createSlice({
   name: "users",
   initialState,
@@ -41,7 +46,8 @@ const userSlice = createSlice({
             lastName,
             email,
             age,
-            password,
+            password: SHA256(password + salt).toString(),
+            salt: salt,
             gender,
             category,
           },

@@ -9,7 +9,7 @@
 }
 
 .header h1 {
- margin: 0 auto
+  margin: 0 auto;
 }
 
 .home {
@@ -37,4 +37,3 @@
 .home li a {
   text-decoration: none;
 }
-
