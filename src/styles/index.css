@@ -57,6 +57,24 @@ nav details > summary > * {
   display: inline;
 }
 
+.download {
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  margin-left: 10px;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: none;
+  background-color: #40bfe7;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.download:hover {
+  background-color: #5aa6c0;
+}
+
 footer {
   display: flex;
   width: 100%;

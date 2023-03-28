@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 import { Categories } from "../types/types";
+import ExportButton from "./ExportCategories";
 
 export const Nav: React.FC = () => {
   const { categories } = useSelector(
@@ -45,6 +46,7 @@ export const Nav: React.FC = () => {
           ))}
         </ul>
       </ul>
+      <ExportButton />
     </nav>
   );
 };

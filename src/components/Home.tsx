@@ -1,22 +1,14 @@
 import React from "react";
+import ExportButton from "./ExportCategories";
 
 const Home: React.FC = () => {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        margin: "100px 50px",
-        lineHeight: "2",
-      }}
-    >
+    <div className='home'>
       <h1>Front-End Task</h1>
-      <ol>
+      <ul>
         <li>
           First page: Simple form with validations for new user (password, Name,
-          Last Name, email, age, gender, category)
+          Last Name, email, age, gender, category).
         </li>
         <li>
           Second page: Form to create categories, sub-categories &
@@ -24,7 +16,11 @@ const Home: React.FC = () => {
           auto-generated categories menu with entries that redirect to pages
           with users belonging to the selected category.
         </li>
-      </ol>
+        <li>
+          Extra: button to export all data in a JSON format.
+          <ExportButton />
+        </li>
+      </ul>
     </div>
   );
 };
