@@ -6,6 +6,7 @@
   left: 0;
   background-color: #333;
   color: #fff;
+  z-index: 2;
 }
 
 .header h1 {
@@ -36,4 +37,20 @@
 
 .home li a {
   text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .home {
+    text-align: center;
+  }
+
+  .home h1 {
+    font-size: 2rem;
+  }
+
+  .home li {
+    font-size: 1rem;
+    flex-direction: column;
+    align-items: center;
+  }
 }

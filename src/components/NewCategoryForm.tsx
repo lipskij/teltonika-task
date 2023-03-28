@@ -286,6 +286,7 @@ const NewCategoryForm = () => {
   return (
     <div className={styles.newCategory}>
       <form onSubmit={handleSubmit} className={styles.form}>
+        <h1>New category form</h1>
         <div className={styles.categoryName}>
           <label htmlFor='category-name'>Category Name:</label>
           <input

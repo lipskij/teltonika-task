@@ -75,9 +75,6 @@ const NewUserForm: React.FC = () => {
     if (!password || !/\d/.test(password)) {
       messages.push("Password should include at least one number");
     }
-    // if (!category) {
-    //   messages.push("Category is required");
-    // }
     if (!gender) {
       messages.push("Gender is required");
     }

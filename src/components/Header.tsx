@@ -21,10 +21,23 @@ const Header: React.FC = () => {
       headerText = "Welcome";
   }
 
+  const handleToggle = () => {
+    const nav = document.querySelector(".mobile-nav");
+    nav?.classList.toggle("open");
+    const hamburger = document.querySelector(".hamburger");
+    hamburger?.classList.toggle("active");
+  };
+
   return (
     <header className='header'>
       <img src={logo} alt='logo' />
       <h1>{headerText}</h1>
+
+      <div className='hamburger' onClick={handleToggle}>
+        <div className='line line1'></div>
+        <div className='line line2'></div>
+        <div className='line line3'></div>
+      </div>
     </header>
   );
 };

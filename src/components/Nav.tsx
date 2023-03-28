@@ -10,43 +10,91 @@ export const Nav: React.FC = () => {
     (state: { categories: Categories }) => state.categories
   );
 
-  return (
-    <nav>
-      <ul>
-        <li>
-          <NavLink to='/'>Home</NavLink>
-        </li>
-        <li>
-          <NavLink to='/new-user'>New user</NavLink>
-        </li>
-        <li>
-          <NavLink to='/new-category'>New category</NavLink>
-        </li>
+  const handleToggle = () => {
+    const nav = document.querySelector(".mobile-nav");
+    nav?.classList.toggle("open");
+    const hamburger = document.querySelector(".hamburger");
+    hamburger?.classList.toggle("active");
+  };
 
+
+
+  return (
+    <div>
+      <nav className='desktop-nav'>
         <ul>
-          {categories?.map((category) => (
-            <li key={category.id}>
-              <details open>
-                <summary>{category.categoryName}</summary>
-                <div>
-                  <ul>
-                    {category.subCategories.map(({ name }, index) => (
-                      <li key={name + index}>
-                        <NavLink
-                          to={`/category/${category.categoryName}/${name}`}
-                        >
-                          {name}
-                        </NavLink>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </details>
-            </li>
-          ))}
+          <li>
+            <NavLink to='/'>Home</NavLink>
+          </li>
+          <li>
+            <NavLink to='/new-user'>New user</NavLink>
+          </li>
+          <li>
+            <NavLink to='/new-category'>New category</NavLink>
+          </li>
+
+          <ul>
+            {categories?.map((category) => (
+              <li key={category.id}>
+                <details open>
+                  <summary>{category.categoryName}</summary>
+                  <div>
+                    <ul>
+                      {category.subCategories.map(({ name }, index) => (
+                        <li key={name + index}>
+                          <NavLink
+                            to={`/category/${category.categoryName}/${name}`}
+                          >
+                            {name}
+                          </NavLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </details>
+              </li>
+            ))}
+          </ul>
         </ul>
-      </ul>
-      <ExportButton />
-    </nav>
+        <ExportButton />
+      </nav>
+      <nav className='mobile-nav'  onClick={handleToggle}>
+        <ul>
+          <li>
+            <NavLink to='/'>Home</NavLink>
+          </li>
+          <li>
+            <NavLink to='/new-user'>New user</NavLink>
+          </li>
+          <li>
+            <NavLink to='/new-category'>New category</NavLink>
+          </li>
+
+          <ul>
+            {categories?.map((category) => (
+              <li key={category.id}>
+                <details open>
+                  <summary>{category.categoryName}</summary>
+                  <div>
+                    <ul>
+                      {category.subCategories.map(({ name }, index) => (
+                        <li key={name + index}>
+                          <NavLink
+                            to={`/category/${category.categoryName}/${name}`}
+                          >
+                            {name}
+                          </NavLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </details>
+              </li>
+            ))}
+          </ul>
+        </ul>
+        <ExportButton />
+      </nav>
+    </div>
   );
 };

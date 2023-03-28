@@ -30,7 +30,6 @@ const categoriesSlice = createSlice({
   reducers: {
     addCategory: {
       reducer: (state, action) => {
-        console.log(action.payload)
         state.categories.push(action.payload);
       },
       prepare: ({ categoryName, subCategories }) => ({
