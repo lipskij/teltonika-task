@@ -1,0 +1,83 @@
+.newUser {
+  margin-top: 50px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background-color: #f2f2f2;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.form h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.form > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  width: 100%;
+}
+
+.form label {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  width: 100%;
+  text-align: left;
+}
+
+.form span {
+  font-size: 0.8rem;
+  color: #808080;
+}
+
+.form input,
+.form select {
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: none;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.form select option:first-child {
+  display: none;
+}
+
+.form button[type="submit"] {
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  border: none;
+  background-color: #40BFE7;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.form button[type="submit"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.form button[type="submit"]:hover:not([disabled]) {
+  background-color: #5aa6c0;
+}
+
+.error {
+  color: red;
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+}

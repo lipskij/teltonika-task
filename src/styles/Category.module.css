@@ -1,0 +1,30 @@
+.main {
+  margin: 50px 20px 0 20px;
+}
+
+.subCategories {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+  margin-top: 20px;
+}
+
+.subCategories li {
+  list-style: none;
+}
+
+.subCategory {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.subCategory p {
+  border-bottom: 1px solid #ccc;
+  padding-left: 20px;
+  font-weight: bold;
+}
+
+.userList {
+  margin: 10px 0 10px 30px;
+}

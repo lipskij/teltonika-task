@@ -1,0 +1,14 @@
+.header {
+  display: flex;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #333;
+  color: #fff;
+}
+
+.header h1 {
+ margin: 0 auto
+}
+
