@@ -7,6 +7,7 @@ import NewCategoryForm from "./components/NewCategoryForm";
 import Header from "./components/Header";
 import Category from "./components/Category";
 import Footer from "./components/Footer";
+import Home from "./components/Home";
 
 function App() {
   return (
@@ -15,14 +16,7 @@ function App() {
         <Header />
         <Nav />
         <Routes>
-          <Route
-            path='/'
-            element={
-              <>
-                <h1>Hello home page</h1>
-              </>
-            }
-          />
+          <Route path='/' element={<Home />} />
           <Route path='/new-user' element={<NewUserForm />} />
           <Route path='/new-category' element={<NewCategoryForm />} />
           <Route
