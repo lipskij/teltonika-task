@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addCategory } from "../app/features/categories/categories";
 import { Users, CategoryFormData } from "../types/types";
 import Select from "react-select";
+import remove from "../images/trash.svg";
 
 const initialFormData: CategoryFormData = {
   categoryName: "",
@@ -280,7 +281,6 @@ const NewCategoryForm = () => {
     label: user.name,
   }));
 
-  // TODO: use simple select for users not a library
   // think about unpdating users category field with category id that user is assigned to
 
   return (
@@ -300,6 +300,14 @@ const NewCategoryForm = () => {
           <div key={`sub-category-${index}`} className={styles.subCategory}>
             <label htmlFor={`sub-category-${index}-name`}>
               Sub-Category {index + 1}:
+              <button
+                className={styles.remove}
+                type='button'
+                onClick={() => removeSubCategory(index)}
+                disabled={formData.subCategories.length === 1}
+              >
+                <img src={remove} alt='remove-sub-category' />
+              </button>
             </label>
             <input
               id={`sub-category-${index + 1}-name`}
@@ -311,6 +319,14 @@ const NewCategoryForm = () => {
               <div key={`sub-sub-category-${subIndex}`}>
                 <label htmlFor={`sub-sub-category-${subIndex}-name`}>
                   Sub-Sub-Category {subIndex + 1}:
+                  <button
+                    className={styles.remove}
+                    type='button'
+                    onClick={() => removeSubSubCategory(index, subIndex)}
+                    disabled={subCategory.subsubCategory.length === 1}
+                  >
+                    <img src={remove} alt='remove-sub-sub-category' />
+                  </button>
                 </label>
                 <input
                   id={`sub-sub-category-${subIndex + 1}-name`}
@@ -328,20 +344,6 @@ const NewCategoryForm = () => {
                 />
               </div>
             ))}
-            <button
-              type='button'
-              onClick={handleAddSubCategory}
-              disabled={formData.subCategories.length === 2}
-            >
-              Add sub-category
-            </button>
-            <button
-              type='button'
-              onClick={() => removeSubCategory(index)}
-              disabled={formData.subCategories.length === 1}
-            >
-              Remove sub-category
-            </button>
 
             <button
               type='button'
@@ -349,13 +351,7 @@ const NewCategoryForm = () => {
             >
               Add sub-sub categories
             </button>
-            <button
-              type='button'
-              onClick={() => removeSubSubCategory(index, index)}
-              disabled={subCategory.subsubCategory.length === 1}
-            >
-              Remove sub-sub categories
-            </button>
+            <hr />
           </div>
         ))}
 
@@ -364,7 +360,12 @@ const NewCategoryForm = () => {
             {message}
           </p>
         ))}
-        <button type='submit'>Submit</button>
+        <div>
+          <button type='submit'>Submit</button>
+          <button type='button' onClick={handleAddSubCategory}>
+            Add sub-category
+          </button>
+        </div>
       </form>
     </div>
   );
