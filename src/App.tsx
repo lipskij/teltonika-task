@@ -6,12 +6,13 @@ import NewUserForm from "./components/NewUserForm";
 import NewCategoryForm from "./components/NewCategoryForm";
 import Header from "./components/Header";
 import Category from "./components/Category";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <>
-      <Header />
       <Router>
+        <Header />
         <Nav />
         <Routes>
           <Route
@@ -24,10 +25,13 @@ function App() {
           />
           <Route path='/new-user' element={<NewUserForm />} />
           <Route path='/new-category' element={<NewCategoryForm />} />
-          {/* route for category and list of users belonging to that category  */}
-          <Route path='/category/:categoryName/:subCategory' element={<Category />} />
+          <Route
+            path='/category/:categoryName/:subCategory'
+            element={<Category />}
+          />
         </Routes>
       </Router>
+      <Footer year={2023} companyName={"Front end task by Emil Lipskij"} />
     </>
   );
 }

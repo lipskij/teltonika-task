@@ -2,21 +2,10 @@ import React from "react";
 import styles from "../styles/NewCategory.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addCategory } from "../app/features/categories/categories";
-import { Users } from "./Category";
+import { Users, CategoryFormData } from "../types/types";
 import Select from "react-select";
 
-interface FormData {
-  categoryName: string;
-  subCategories: {
-    name: string;
-    subsubCategory: {
-      subName: string;
-      users: string[];
-    }[];
-  }[];
-}
-
-const initialFormData: FormData = {
+const initialFormData: CategoryFormData = {
   categoryName: "",
   subCategories: [
     {
@@ -32,7 +21,8 @@ const initialFormData: FormData = {
 };
 
 const NewCategoryForm = () => {
-  const [formData, setFormData] = React.useState<FormData>(initialFormData);
+  const [formData, setFormData] =
+    React.useState<CategoryFormData>(initialFormData);
   const [validationMessages, setValidationMessages] = React.useState<string[]>(
     []
   );
@@ -131,8 +121,8 @@ const NewCategoryForm = () => {
         return false;
       }
       e.preventDefault();
-      setFormData(initialFormData);
       dispatch(addCategory(formData));
+      setFormData(initialFormData);
     },
     [formData, dispatch]
   );
@@ -163,7 +153,7 @@ const NewCategoryForm = () => {
     [formData]
   );
 
-  function validateFormData(formData: FormData) {
+  function validateFormData(formData: CategoryFormData) {
     const errors: {
       categoryName?: string;
       subCategories?: {
@@ -178,11 +168,11 @@ const NewCategoryForm = () => {
       };
     } = {};
 
-    const validationMessages: string[] = [];
+    const errorMessages: string[] = [];
 
     if (!formData.categoryName.trim()) {
       errors.categoryName = "Category name is required.";
-      validationMessages.push("Category name is required.");
+      errorMessages.push("Category name is required.");
     }
 
     if (!formData.subCategories || formData.subCategories.length === 0) {
@@ -191,7 +181,7 @@ const NewCategoryForm = () => {
           name: "At least one subcategory is required.",
         },
       };
-      validationMessages.push("At least one subcategory is required.");
+      errorMessages.push("At least one subcategory is required.");
     } else {
       const subCategoriesErrors: {
         [key: number]: {
@@ -209,7 +199,7 @@ const NewCategoryForm = () => {
           subCategoriesErrors[subCategoryIndex] = {
             name: "Subcategory name is required.",
           };
-          validationMessages.push(
+          errorMessages.push(
             `Subcategory ${subCategoryIndex + 1} name is required.`
           );
         }
@@ -226,7 +216,7 @@ const NewCategoryForm = () => {
               },
             },
           };
-          validationMessages.push(
+          errorMessages.push(
             `At least one sub-sub category is required for subcategory ${
               subCategoryIndex + 1
             }.`
@@ -245,7 +235,7 @@ const NewCategoryForm = () => {
                 subsubCategoryErrors[subsubCategoryIndex] = {
                   subName: "Sub-sub category name is required.",
                 };
-                validationMessages.push(
+                errorMessages.push(
                   `Sub-sub category ${
                     subsubCategoryIndex + 1
                   } name is required for subcategory ${subCategoryIndex + 1}.`
@@ -257,7 +247,7 @@ const NewCategoryForm = () => {
                   ...subsubCategoryErrors[subsubCategoryIndex],
                   users: "At least one user is required.",
                 };
-                validationMessages.push(
+                errorMessages.push(
                   `At least one user is required for sub-sub category ${
                     subsubCategoryIndex + 1
                   } of subcategory ${subCategoryIndex + 1}.`
@@ -280,7 +270,7 @@ const NewCategoryForm = () => {
       }
     }
 
-    setValidationMessages(validationMessages);
+    setValidationMessages(errorMessages);
 
     return errors;
   }
@@ -290,14 +280,9 @@ const NewCategoryForm = () => {
     label: user.name,
   }));
 
-  // TODO: Add validation/ DONE
-  // TODO: Add remove sub-category/ DONE
   // TODO: use simple select for users not a library
-  // TODO: only two sub categories are allowed
-  // TODO: use rect.memo, react.useCallback/DONE
-  // TODO: enumarate sub-categories and sub-sub categories according to the index/DONE
   // think about unpdating users category field with category id that user is assigned to
-  // TODO: disable add sub-category when sub-category legth is 2/DONE
+
   return (
     <div className={styles.newCategory}>
       <form onSubmit={handleSubmit} className={styles.form}>

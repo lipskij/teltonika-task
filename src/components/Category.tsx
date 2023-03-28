@@ -1,50 +1,14 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-
+import {
+  Categories,
+  SubCategories,
+  SubsubCategory,
+  User,
+  Users,
+} from "../types/types";
 import styles from "../styles/Category.module.css";
-
-interface User {
-  id: string;
-  name: string;
-}
-
-export interface Users {
-  users: User[];
-}
-
-export interface Category {
-  id: string;
-  categoryName: string;
-  subCategories: {
-    name: string;
-    subsubCategory: {
-      subName: string;
-      users: string[];
-    }[];
-  }[];
-}
-
-export interface Categories {
-  categories: Category[];
-}
-
-export interface SubCategories {
-  subCategories: {
-    name: string;
-    subsubCategory: {
-      subName: string;
-      users: string[];
-    }[];
-  }[];
-}
-
-export interface SubsubCategory {
-  subsubCategory: {
-    subName: string;
-    users: string[];
-  }[];
-}
 
 const Category: React.FC = () => {
   const { subCategory, categoryName } = useParams();

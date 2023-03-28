@@ -1,63 +1,55 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../app/features/users/users";
 import styles from "../styles/NewUser.module.css";
-import { Categories } from "./Category";
+import { Categories, UserFormData } from "../types/types";
+
+const initialFormData: UserFormData = {
+  name: "",
+  lastName: "",
+  email: "",
+  password: "",
+  age: 0,
+  gender: "",
+  category: "",
+};
 
 const NewUserForm: React.FC = () => {
-  const [validationMessages, setValidationMessages] = useState<string[]>([]);
-  const [formData, setFormData] = useState({
-    name: "",
-    lastName: "",
-    email: "",
-    password: "",
-    age: 0,
-    gender: "",
-    category: "",
-  });
+  const [validationMessages, setValidationMessages] = React.useState<string[]>(
+    []
+  );
+  const [formData, setFormData] = React.useState<UserFormData>(initialFormData);
   const dispatch = useDispatch();
   const { categories } = useSelector(
     (state: { categories: Categories }) => state.categories
   );
 
-  const handleChange = ({
-    currentTarget,
-  }:
-    | React.FormEvent<HTMLInputElement>
-    | React.FormEvent<HTMLSelectElement>) => {
-    setFormData({ ...formData, [currentTarget.name]: currentTarget.value });
-    setValidationMessages([]);
-  };
+  const handleChange = React.useCallback(
+    ({
+      currentTarget,
+    }:
+      | React.FormEvent<HTMLInputElement>
+      | React.FormEvent<HTMLSelectElement>) => {
+      setFormData({ ...formData, [currentTarget.name]: currentTarget.value });
+      setValidationMessages([]);
+    },
+    [formData]
+  );
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    validateForm();
-    if (!validateForm()) {
+  const handleSubmit = React.useCallback(
+    (event: React.FormEvent<HTMLFormElement>) => {
+      validateForm();
+      if (!validateForm()) {
+        event.preventDefault();
+        return false;
+      }
+
       event.preventDefault();
-      return false;
-    }
-
-    event.preventDefault();
-    dispatch(
-      addUser({
-        name: formData.name,
-        lastName: formData.lastName,
-        email: formData.email,
-        password: formData.password,
-        age: Number(formData.age),
-        gender: formData.gender,
-        category: formData.category,
-      })
-    );
-    setFormData({
-      name: "",
-      lastName: "",
-      email: "",
-      password: "",
-      age: 0,
-      gender: "",
-      category: "",
-    });
-  };
+      dispatch(addUser(formData));
+      setFormData(initialFormData);
+    },
+    [formData, dispatch]
+  );
 
   const validateForm = () => {
     const { name, lastName, email, age, password, gender } = formData;
@@ -181,7 +173,6 @@ const NewUserForm: React.FC = () => {
           <select
             id='category'
             name='category'
-            // required
             value={formData.category}
             onChange={handleChange}
           >

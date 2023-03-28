@@ -2,15 +2,13 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
-import "../styles/Nav.module.css";
-import { Categories } from "./Category";
+import { Categories } from "../types/types";
 
 export const Nav: React.FC = () => {
   const { categories } = useSelector(
     (state: { categories: Categories }) => state.categories
   );
 
-  // console.log(categories);
   return (
     <nav>
       <ul>

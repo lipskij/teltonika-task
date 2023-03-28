@@ -9,16 +9,17 @@ body {
   font-size: 16px;
   line-height: 1.5;
   color: #333;
-  margin-left: 200px; /* Change this value as needed */
+  margin-left: 200px;
 }
 nav {
   position: fixed;
   top: 50px;
   left: 0;
   height: 100%;
-  width: 200px; /* Change this value as needed */
-  background-color: #fff; /* Change this value as needed */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Add a box shadow for a subtle effect */
+  overflow: scroll;
+  width: 200px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 nav ul {
@@ -36,13 +37,34 @@ nav a {
   display: block;
   padding: 10px;
   text-decoration: none;
-  color: #333; /* Change this value as needed */
+  color: #333;
 }
 
 nav a:hover {
-  background-color: #f5f5f5; /* Change this value as needed */
+  background-color: #f5f5f5;
 }
 
 nav a.active {
-  background-color: #f5f5f5; /* Change this value as needed */
+  background-color: #f5f5f5;
+}
+
+nav details > summary {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+}
+
+nav details > summary > * {
+  display: inline;
+}
+
+footer {
+  display: flex;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  justify-content: center;
 }
