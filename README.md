@@ -2,6 +2,9 @@
 
 [![LinkedIn][linkedin-shield]][linkedin-url]
 [![Gmail][gmail-shield]][gmail-url]
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ba628fc3-2bbd-4511-8830-059bd2789ccc/deploy-status)](https://app.netlify.com/sites/tltnk-task/deploys)
+
+https://tltnk-task.netlify.app/
 
 
 <!-- TABLE OF CONTENTS -->
