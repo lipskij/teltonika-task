@@ -1,5 +1,5 @@
 
-[![LinkedIn][linkedin-shield]][https://www.linkedin.com/in/emil-lipskij-6920831b2/]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
 
 <!-- TABLE OF CONTENTS -->
@@ -115,7 +115,7 @@ Project Link: [https://github.com/lipskij/teltonika-task](https://github.com/lip
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/emil-lipskij-6920831b2/
-[product-app-screenshot]: images/app-screenshot.png
+[product-app-screenshot]: ./src/images/app-screenshot.png
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
 [Redux.js]: https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white
