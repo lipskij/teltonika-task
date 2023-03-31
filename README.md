@@ -37,7 +37,7 @@ https://tltnk-task.netlify.app/
 
 This is a front-end task.
 
-Here's the requirements::
+Here's the requirements:
 * Simple form with validations for new user (password, Name, Last Name, email, age,
 gender, category)
 * Form to create categories, sub-categories & sub-sub-categories for users.
